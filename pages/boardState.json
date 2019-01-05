@@ -1,0 +1,502 @@
+[
+    {
+        "i": 0,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 1,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 2,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 3,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 4,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 5,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 6,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 7,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 8,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 9,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 10,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 11,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 12,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 13,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 14,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 15,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 16,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 17,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 18,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 19,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 20,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 21,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 22,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 23,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 24,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 25,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 26,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 27,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 28,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 29,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 30,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 31,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 32,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 33,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 34,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 35,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 36,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 37,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 38,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 39,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 40,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 41,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 42,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 43,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 44,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 45,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 46,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 47,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 48,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 49,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 50,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 51,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 52,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 53,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 54,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 55,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 56,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 57,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 58,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 59,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 60,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 61,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 62,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 63,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 64,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 65,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 66,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 67,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 68,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 69,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 70,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 71,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 72,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 73,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 74,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 75,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 76,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 77,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 78,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 79,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 80,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 81,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 82,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 83,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 84,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 85,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 86,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 87,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 88,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 89,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 90,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 91,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 92,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 93,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 94,
+        "cellHas": "BLANK",
+        "shown": false
+    },
+    {
+        "i": 95,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 96,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 97,
+        "cellHas": "BOMB",
+        "shown": false
+    },
+    {
+        "i": 98,
+        "cellHas": "NUMBER",
+        "shown": false
+    },
+    {
+        "i": 99,
+        "cellHas": "BOMB",
+        "shown": false
+    }
+]
