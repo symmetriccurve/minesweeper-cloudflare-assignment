@@ -12,43 +12,41 @@ import getNeighboringBombCount from './utilities/getNeighboringBombCount'
 
 export default class App extends Component {
   state = {
-    boardState: generateBoard(2),
+    boardState: generateBoard(10),
     isExploded: false,
-    boardSize: 2
+    boardSize: 10
   }
 
-  enableNeighboringBlankCells(boardState,cellId){
-    let blankCells = []
-    let cellIdsToCheckForBlank = []
+  enableNeighboringBlankCells(boardState, cellId) {
     var blankCellIds = []
     var nonBlankCells = []
-    const {boardSize} = this.state
+    const { boardSize } = this.state
 
     const getAllBlanks = (cellId) => {
-      const neighbors = getNeighbors(boardSize,cellId)
+      const neighbors = getNeighbors(boardSize, cellId)
 
-      neighbors.forEach(id=>{
-        if(boardState[id].holds == 'BLANK'){
+      neighbors.forEach(id => {
+        if (boardState[id].holds === 'BLANK') {
           blankCellIds.push(id)
-          if(blankCellIds.indexOf(id) == -1){
+          if (blankCellIds.indexOf(id) === -1) {
             getAllBlanks(id)
           }
-        }else if(boardState[id].holds == 'BOMB'|| boardState[id].holds == 'NUMBER'){
-            //nonBlankCells.push(id)
+        } else if (boardState[id].holds === 'BOMB' || boardState[id].holds === 'NUMBER') {
+          //nonBlankCells.push(id)
         }
       })
     }
     getAllBlanks(cellId)
 
-    blankCellIds.forEach(id=>{
+    blankCellIds.forEach(id => {
       boardState[id].isExposed = true
     })
 
-    nonBlankCells.forEach(id=>{
-      if(boardState[id].isExposed == false){
+    nonBlankCells.forEach(id => {
+      if (boardState[id].isExposed === false) {
         boardState[id].isExposed = true
         // boardState[id].holds = 'NUMBER'
-        boardState[id].neighboringBombCount = getNeighboringBombCount(boardState,id)
+        boardState[id].neighboringBombCount = getNeighboringBombCount(boardState, id)
       }
     })
 
@@ -57,25 +55,25 @@ export default class App extends Component {
     })
   }
 
-  handleExpose(e,cellIndex){
-    const {boardState} = this.state
+  handleExpose(e, cellIndex) {
+    const { boardState } = this.state
     let currentCell = boardState[cellIndex]
-    if(e.type == 'contextmenu'){
-      if(currentCell.isExposed == false){
+    if (e.type === 'contextmenu') {
+      if (currentCell.isExposed === false) {
         boardState[cellIndex].isFlagged = true
       }
-    }else{
-      if(currentCell.isExposed == false){
+    } else {
+      if (currentCell.isExposed === false) {
         boardState[cellIndex].isExposed = true
         boardState[cellIndex].isFlagged = false
-        if(currentCell.holds == 'BOMB'){
+        if (currentCell.holds === 'BOMB') {
           this.setState({
             isExploded: true
           })
-        }else if(currentCell.holds == 'BLANK'){
-            this.enableNeighboringBlankCells(boardState,cellIndex)
-        }else{
-          boardState[cellIndex].neighboringBombs = getNeighboringBombCount(boardState,cellIndex)
+        } else if (currentCell.holds === 'BLANK') {
+          this.enableNeighboringBlankCells(boardState, cellIndex)
+        } else {
+          boardState[cellIndex].neighboringBombs = getNeighboringBombCount(boardState, cellIndex)
         }
       }
     }
@@ -84,57 +82,62 @@ export default class App extends Component {
     })
   }
 
-  shouldCellBeDisabled(cell){
-    if(cell.isFlagged){
+  shouldCellBeDisabled(cell) {
+    if (cell.isFlagged) {
       return false
-    }else if(cell.isExposed){
-        if(cell.holds == 'NUMBER'){
-          return false
-        }else{
-          return cell.holds == 'BLANK' || cell.holds == 'BOMB'
-        }
+    } else if (cell.isExposed) {
+      if (cell.holds === 'NUMBER') {
+        return false
+      } else {
+        return cell.holds === 'BLANK' || cell.holds === 'BOMB'
+      }
     }
     return false
   }
 
-  handleBoardSizeChange(e){
-    console.log('boardSize',e.target.value);
+  handleBoardSizeChange(e) {
+    console.log('boardSize', e.target.value);
     const boardSize = Number(e.target.value)
     this.setState({
       boardSize,
       boardState: generateBoard(boardSize)
     })
-    
+
   }
 
   render() {
-    const {boardState,isExploded,boardSize} = this.state
+    const { boardState, isExploded, boardSize } = this.state
     const boardStatus = isExploded ? 'lost' : 'active'
     return (
       <Layout title={`Minesweeper (${boardStatus})`}>
-        <select onChange={e=>this.handleBoardSizeChange(e)} value={boardSize}>
+        <select onChange={e => this.handleBoardSizeChange(e)} value={boardSize}>
           <option value={1}> 1 </option>
           <option value={2}> 2 </option>
           <option value={3}> 3 </option>
           <option value={4}> 4 </option>
           <option value={5}> 5 </option>
+          <option value={6}> 6 </option>
+          <option value={7}> 7 </option>
+          <option value={8}> 8 </option>
+          <option value={9}> 9 </option>
+          <option value={10}> 10 </option>
         </select>
         <Desk boardSize={boardSize}>
           {
-              boardState.map(cell => {
-                return(
-                  <Square key={cell.id} disabled={this.shouldCellBeDisabled(cell)} onClick={e=>this.handleExpose(e,cell.id)} onContextMenu={e=>this.handleExpose(e,cell.id)}>
-                    {cell.holds === 'BOMB' && cell.isExposed && <Mine /> }
-                    {cell.holds === 'NUMBER' && cell.isExposed && cell.neighboringBombs }
-                    {/* {cell.holds === 'BOMB' && <Mine /> }
-                    {cell.holds === 'NUMBER' && cell.id } */}
-                    {cell.isFlagged && <Flag />}
-                  </Square>
-                )
-               })
+            boardState.map(cell => {
+              return (
+                <Square key={cell.id} disabled={this.shouldCellBeDisabled(cell)} onClick={e => this.handleExpose(e, cell.id)} onContextMenu={e => this.handleExpose(e, cell.id)}>
+                  {cell.holds === 'BOMB' && cell.isExposed && <Mine />}
+                  {cell.holds === 'NUMBER' && cell.isExposed && cell.neighboringBombs}
+                  {/* {cell.holds ==== 'BOMB' && <Mine /> }
+                    {cell.holds ==== 'NUMBER' && cell.id } */}
+                  {cell.isFlagged && <Flag />}
+                </Square>
+              )
+            })
           }
-      </Desk>
-    </Layout>
+        </Desk>
+      </Layout>
     )
   }
 }
