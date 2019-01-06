@@ -17,7 +17,6 @@ export default class App extends Component {
   getNeighboringBombCount(boardState,cellId){
     let neighboringBombCount = 0
     let cellIdsToCheckForBomb = []
-    let blankCells = []
     if(
         cellId == 0 || 
         cellId == boardSize - 1 || 
@@ -75,7 +74,6 @@ export default class App extends Component {
         neighboringBombCount++
       }
     })
-    console.log(`FOUND BLANK CELLS AT`, blankCells)
     
     return neighboringBombCount
   }
@@ -85,6 +83,7 @@ export default class App extends Component {
     let blankCells = []
     let cellIdsToCheckForBlank = []
     var blankCellIds = []
+    var nonBlankCells = []
     const getAllBlanks = (cellId) => {
       if(
         cellId == 0 || 
@@ -137,14 +136,13 @@ export default class App extends Component {
       }
 
       cellIdsToCheckForBlank.forEach(id=>{
-        //console.log(`CHECKING CELL----------------- ${id}`)
         if(boardState[id].holds == 'BLANK'){
-          //console.log(`BLANK Found at ${id}`)
           blankCellIds.push(id)
-          //console.log(`blankCellIds So FAR `, blankCellIds)
           if(blankCellIds.indexOf(id) == -1){
             getAllBlanks(id)
           }
+        }else if(boardState[id].holds == 'BOMB'|| boardState[id].holds == 'NUMBER'){
+            nonBlankCells.push(id)
         }
       })
 
@@ -152,8 +150,16 @@ export default class App extends Component {
     
     getAllBlanks(cellId)
     
+    console.log(`Found BOMB AT NEIGHTBHOR BLANK, at`,nonBlankCells)
+
     blankCellIds.forEach(id=>{
       boardState[id].isExposed = true
+    })
+
+    nonBlankCells.forEach(id=>{
+      boardState[id].isExposed = true
+      boardState[id].holds = 'NUMBER'
+      //boardState[id].neighboringBombCount = this.getNeighboringBombCount(boardState,id)
     })
 
     this.setState({
