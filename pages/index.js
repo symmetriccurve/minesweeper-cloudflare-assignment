@@ -6,30 +6,47 @@ import Square from '../components/square';
 import Mine from '../components/mine';
 import Flag from '../components/flag';
 
+window.document.oncontextmenu = function() {
+  return false;
+}
+
 import React, { Component } from 'react'
 
 export default class App extends Component {
   state = {
-    boardState: boardState,//generateBoard(100),
+    boardState: generateBoard(100),
     isExploded: false
   }
 
-  handleExpose(cellIndex){
+  handleExpose(e,cellIndex){
   const {boardState} = this.state
   let bombs = 0
   let cellsToCheck = []
-  if(cellIndex == 0 || cellIndex == boardSize-1 || cellIndex == boardSize*boardSize - boardSize || cellIndex == boardSize*boardSize - 1){
+  if(e.type == 'contextmenu'){
+    boardState[cellIndex].isFlagged = true
+    console.log(`Flagging the Cell ${cellIndex}`);
+  }else if(boardState[cellIndex].holds == 'BOMB'){
+    console.log(`BOMB Exploded at cell  ${cellIndex}`);
+    this.setState({
+      isExploded: true
+    })
+  }else if(cellIndex == 0 || cellIndex == boardSize-1 || cellIndex == boardSize*boardSize - boardSize || cellIndex == boardSize*boardSize - 1){
     switch(cellIndex){
+       /* Corners */
       case 0: 
+        /* Top Left */
         cellsToCheck = [1,boardSize,boardSize+1,]
         break
       case boardSize-1: 
+         /* Top Right */
         cellsToCheck = cellsToCheck = [cellIndex - 1,cellIndex +(boardSize- 1),cellIndex + boardSize] 
         break
       case boardSize*boardSize - boardSize: 
+         /* Bottom Left */
        cellsToCheck = [cellIndex- boardSize,cellIndex-(boardSize - 1),cellIndex + 1]  
        break
       case boardSize*boardSize - 1: 
+        /* Bottom Right */
         cellsToCheck = [cellIndex - 1,cellIndex - (boardSize + 1),cellIndex- boardSize]
         break
     }
@@ -49,6 +66,8 @@ export default class App extends Component {
     /* Bottom Edge */
     console.log('Bottom Edge');
     cellsToCheck = [cellIndex - 1,cellIndex - (boardSize + 1),cellIndex- boardSize,cellIndex-(boardSize - 1),cellIndex + 1]
+  }else{
+    cellsToCheck = [cellIndex - (boardSize + 1),cellIndex- boardSize,cellIndex-(boardSize - 1),cellIndex - 1,cellIndex + 1,cellIndex +(boardSize- 1),cellIndex + boardSize,cellIndex + (boardSize  + 1)]  
   }
 
   cellsToCheck.forEach(cellIndex=>{
@@ -58,26 +77,30 @@ export default class App extends Component {
       bombs++
     }
   })
+  boardState[cellIndex].isExposed = true
+  boardState[cellIndex].neighboringBombs = bombs
+  this.setState({
+    boardState
+  })
   console.log(`BOMBS FOUND, ${bombs}`);
   }
 
   render() {
-    const {boardState} = this.state
+    const {boardState,isExploded} = this.state
+    const boardStatus = isExploded ? 'lost' : 'active'
     return (
-      <Layout title={`Minesweeper (active)`}>
+      <Layout title={`Minesweeper (${boardStatus})`}>
         <Desk boardSize={boardSize}>
           {
               boardState.map(cell => {
-                console.log(`Cell has ${cell.holds} rendering ${cell.id} `)
+                //console.log(`Cell has ${cell.holds} rendering ${cell.id} `)
                 // console.log(`cell.holds === 'BLANK'`)
                 // console.log(`cell.holds === 'BOMB'`)
                 return(
-                  <Square key={cell.id} disabled={(cell.holds == 'BLANK' || cell.holds == 'BOMB') && cell.isExposed } onClick={()=>this.handleExpose(cell.id)}>
-                    {cell.holds === 'BOMB' && cell.isExposed && <Mine /> }
-                    {cell.holds === 'NUMBER' && cell.isExposed && cell.id }
-                    {/* <Mine /> */}
-                    {/* {i === 25 && <Flag />}
-                    {i === 77 ? '20' : ''} */}
+                  <Square key={cell.id} disabled={(cell.holds == 'BLANK' || cell.holds == 'BOMB') && cell.isExposed } onClick={e=>this.handleExpose(e,cell.id)} onContextMenu={e=>this.handleExpose(e,cell.id)}>
+                    {cell.holds === 'BOMB' && cell.isExposed && !cell.isFlagged && <Mine /> }
+                    {cell.holds === 'NUMBER' && cell.isExposed && !cell.isFlagged && cell.neighboringBombs }
+                    {cell.isFlagged && <Flag />}
                   </Square>
                 )
                })
