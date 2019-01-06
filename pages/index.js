@@ -6,9 +6,7 @@ import Square from '../components/square';
 import Mine from '../components/mine';
 import Flag from '../components/flag';
 
-window.document.oncontextmenu = function() {
-  return false;
-}
+
 
 import React, { Component } from 'react'
 
@@ -22,7 +20,7 @@ export default class App extends Component {
   const {boardState} = this.state
   let bombs = 0
   let cellsToCheck = []
-  if(e.type == 'contextmenu'){
+  if(e.type == 'contextmenu' && !boardState[cellIndex].isExposed){
     boardState[cellIndex].isFlagged = true
     console.log(`Flagging the Cell ${cellIndex}`);
   }else if(boardState[cellIndex].holds == 'BOMB'){
@@ -30,6 +28,8 @@ export default class App extends Component {
     this.setState({
       isExploded: true
     })
+  }else if(boardState[cellIndex].isFlagged && !boardState[cellIndex].isExposed){
+    boardState[cellIndex].isFlagged = false
   }else if(cellIndex == 0 || cellIndex == boardSize-1 || cellIndex == boardSize*boardSize - boardSize || cellIndex == boardSize*boardSize - 1){
     switch(cellIndex){
        /* Corners */
@@ -85,6 +85,15 @@ export default class App extends Component {
   console.log(`BOMBS FOUND, ${bombs}`);
   }
 
+  getCellVisibility(cell){
+    if(cell.isFlagged){
+      return false
+    }else if(cell.isExposed){
+      return cell.holds == 'BLANK' || cell.holds == 'BOMB'
+    }
+    //return ((cell.holds == 'BLANK' || cell.holds == 'BOMB') && cell.isExposed) || cell.isFlagged && !cell.isExposed
+  }
+
   render() {
     const {boardState,isExploded} = this.state
     const boardStatus = isExploded ? 'lost' : 'active'
@@ -97,7 +106,7 @@ export default class App extends Component {
                 // console.log(`cell.holds === 'BLANK'`)
                 // console.log(`cell.holds === 'BOMB'`)
                 return(
-                  <Square key={cell.id} disabled={(cell.holds == 'BLANK' || cell.holds == 'BOMB') && cell.isExposed } onClick={e=>this.handleExpose(e,cell.id)} onContextMenu={e=>this.handleExpose(e,cell.id)}>
+                  <Square key={cell.id} disabled={this.getCellVisibility(cell)} onClick={e=>this.handleExpose(e,cell.id)} onContextMenu={e=>this.handleExpose(e,cell.id)}>
                     {cell.holds === 'BOMB' && cell.isExposed && !cell.isFlagged && <Mine /> }
                     {cell.holds === 'NUMBER' && cell.isExposed && !cell.isFlagged && cell.neighboringBombs }
                     {cell.isFlagged && <Flag />}
