@@ -16,82 +16,110 @@ export default class App extends Component {
     isExploded: false
   }
 
+  getNeighboringBombCount(boardState,cellIndex){
+    let neighboringBombCount = 0
+    let cellsToCheck = []
+    if(
+        cellIndex == 0 || 
+        cellIndex == boardSize-1 || 
+        cellIndex == boardSize*boardSize - boardSize || 
+        cellIndex == boardSize*boardSize - 1
+      ){
+       /* Corners */
+      switch(cellIndex){
+        case 0: 
+          /* Top Left */
+          cellsToCheck = [1,boardSize,boardSize+1,]
+          break
+        case boardSize-1: 
+           /* Top Right */
+          cellsToCheck = cellsToCheck = [cellIndex - 1,cellIndex +(boardSize- 1),cellIndex + boardSize] 
+          break
+        case boardSize*boardSize - boardSize: 
+           /* Bottom Left */
+         cellsToCheck = [cellIndex- boardSize,cellIndex-(boardSize - 1),cellIndex + 1]  
+         break
+        case boardSize*boardSize - 1: 
+          /* Bottom Right */
+          cellsToCheck = [cellIndex - 1,cellIndex - (boardSize + 1),cellIndex- boardSize]
+          break
+      }
+    }else if(cellIndex%boardSize == boardSize - 1){
+      /* Right Edge */
+      console.log('CLICK ON RIGHT EDGE');
+      cellsToCheck = [
+          cellIndex - (boardSize + 1),
+          cellIndex- boardSize,cellIndex - 1,
+          cellIndex +(boardSize- 1),
+          cellIndex + boardSize
+        ]
+    }else if(cellIndex%boardSize == 0){
+      /* Left Edge */
+      console.log('CLICK ON Left EDGE');
+      cellsToCheck = [cellIndex- boardSize,cellIndex-(boardSize - 1),cellIndex + 1,cellIndex + boardSize,cellIndex + (boardSize  + 1)]
+    }else if(cellIndex < boardSize){
+      /* Top Edge */
+      console.log('CLICK ON Top EDGE');
+      cellsToCheck = [cellIndex - 1,cellIndex +(boardSize- 1),cellIndex + boardSize,cellIndex + (boardSize  + 1),cellIndex + 1] 
+    }else if(cellIndex > (boardSize*boardSize) - boardSize && cellIndex < (boardSize*boardSize) - 1){
+      /* Bottom Edge */
+      console.log('Bottom Edge');
+      cellsToCheck = [cellIndex - 1,cellIndex - (boardSize + 1),cellIndex- boardSize,cellIndex-(boardSize - 1),cellIndex + 1]
+    }else{
+      cellsToCheck = [cellIndex - (boardSize + 1),cellIndex- boardSize,cellIndex-(boardSize - 1),cellIndex - 1,cellIndex + 1,cellIndex +(boardSize- 1),cellIndex + boardSize,cellIndex + (boardSize  + 1)]  
+    }
+
+    cellsToCheck.forEach(cellIndex=>{
+      console.log(`CHECKING CELL----------------- ${cellIndex}`);
+      if(boardState[cellIndex].holds == 'BOMB'){
+        console.log(`Bomb Found at ${cellIndex}`);
+        neighboringBombCount++
+      }
+    })
+    return neighboringBombCount
+  }
+
   handleExpose(e,cellIndex){
   const {boardState} = this.state
-  let bombs = 0
+  //let bombs = 0
   let cellsToCheck = []
-  if(e.type == 'contextmenu' && !boardState[cellIndex].isExposed){
-    boardState[cellIndex].isFlagged = true
-    console.log(`Flagging the Cell ${cellIndex}`);
-  }else if(boardState[cellIndex].holds == 'BOMB'){
-    console.log(`BOMB Exploded at cell  ${cellIndex}`);
-    this.setState({
-      isExploded: true
-    })
-  }else if(boardState[cellIndex].isFlagged && !boardState[cellIndex].isExposed){
-    boardState[cellIndex].isFlagged = false
-  }else if(cellIndex == 0 || cellIndex == boardSize-1 || cellIndex == boardSize*boardSize - boardSize || cellIndex == boardSize*boardSize - 1){
-    switch(cellIndex){
-       /* Corners */
-      case 0: 
-        /* Top Left */
-        cellsToCheck = [1,boardSize,boardSize+1,]
-        break
-      case boardSize-1: 
-         /* Top Right */
-        cellsToCheck = cellsToCheck = [cellIndex - 1,cellIndex +(boardSize- 1),cellIndex + boardSize] 
-        break
-      case boardSize*boardSize - boardSize: 
-         /* Bottom Left */
-       cellsToCheck = [cellIndex- boardSize,cellIndex-(boardSize - 1),cellIndex + 1]  
-       break
-      case boardSize*boardSize - 1: 
-        /* Bottom Right */
-        cellsToCheck = [cellIndex - 1,cellIndex - (boardSize + 1),cellIndex- boardSize]
-        break
+  let currentCell = boardState[cellIndex]
+  if(e.type == 'contextmenu'){
+    if(currentCell.isExposed == false){
+      boardState[cellIndex].isFlagged = true
     }
-  }else if(cellIndex%boardSize == boardSize - 1){
-    /* Right Edge */
-    console.log('CLICK ON RIGHT EDGE');
-    cellsToCheck = [cellIndex - (boardSize + 1),cellIndex- boardSize,cellIndex - 1,cellIndex +(boardSize- 1),cellIndex + boardSize]
-  }else if(cellIndex%boardSize == 0){
-    /* Left Edge */
-    console.log('CLICK ON Left EDGE');
-    cellsToCheck = [cellIndex- boardSize,cellIndex-(boardSize - 1),cellIndex + 1,cellIndex + boardSize,cellIndex + (boardSize  + 1)]
-  }else if(cellIndex < boardSize){
-    /* Top Edge */
-    console.log('CLICK ON Top EDGE');
-    cellsToCheck = [cellIndex - 1,cellIndex +(boardSize- 1),cellIndex + boardSize,cellIndex + (boardSize  + 1),cellIndex + 1] 
-  }else if(cellIndex > (boardSize*boardSize) - boardSize && cellIndex < (boardSize*boardSize) - 1){
-    /* Bottom Edge */
-    console.log('Bottom Edge');
-    cellsToCheck = [cellIndex - 1,cellIndex - (boardSize + 1),cellIndex- boardSize,cellIndex-(boardSize - 1),cellIndex + 1]
   }else{
-    cellsToCheck = [cellIndex - (boardSize + 1),cellIndex- boardSize,cellIndex-(boardSize - 1),cellIndex - 1,cellIndex + 1,cellIndex +(boardSize- 1),cellIndex + boardSize,cellIndex + (boardSize  + 1)]  
-  }
-
-  cellsToCheck.forEach(cellIndex=>{
-    console.log(`CHECKING CELL----------------- ${cellIndex}`);
-    if(boardState[cellIndex].holds == 'BOMB'){
-      console.log(`Bomb Found at ${cellIndex}`);
-      bombs++
+    if(currentCell.isExposed == false){
+      debugger
+      boardState[cellIndex].isExposed = true
+      boardState[cellIndex].isFlagged = false
+      if(currentCell.holds == 'BOMB'){
+        this.setState({
+          isExploded: true
+        })
+      }else if(currentCell.holds == 'BLANK'){
+          // Enable all neibhoring cells
+      }else{
+        boardState[cellIndex].neighboringBombs = this.getNeighboringBombCount(boardState,cellIndex)
+      }
     }
-  })
-  boardState[cellIndex].isExposed = true
-  boardState[cellIndex].neighboringBombs = bombs
-  this.setState({
-    boardState
-  })
-  console.log(`BOMBS FOUND, ${bombs}`);
+  }
+    this.setState({
+      boardState
+    })
   }
 
-  getCellVisibility(cell){
+  shouldCellBeDisabled(cell){
     if(cell.isFlagged){
       return false
     }else if(cell.isExposed){
-      return cell.holds == 'BLANK' || cell.holds == 'BOMB'
+        if(cell.holds == 'NUMBER'){
+          return false
+        }else{
+          return cell.holds == 'BLANK' || cell.holds == 'BOMB'
+        }
     }
-    //return ((cell.holds == 'BLANK' || cell.holds == 'BOMB') && cell.isExposed) || cell.isFlagged && !cell.isExposed
+    return false
   }
 
   render() {
@@ -106,9 +134,9 @@ export default class App extends Component {
                 // console.log(`cell.holds === 'BLANK'`)
                 // console.log(`cell.holds === 'BOMB'`)
                 return(
-                  <Square key={cell.id} disabled={this.getCellVisibility(cell)} onClick={e=>this.handleExpose(e,cell.id)} onContextMenu={e=>this.handleExpose(e,cell.id)}>
-                    {cell.holds === 'BOMB' && cell.isExposed && !cell.isFlagged && <Mine /> }
-                    {cell.holds === 'NUMBER' && cell.isExposed && !cell.isFlagged && cell.neighboringBombs }
+                  <Square key={cell.id} disabled={this.shouldCellBeDisabled(cell)} onClick={e=>this.handleExpose(e,cell.id)} onContextMenu={e=>this.handleExpose(e,cell.id)}>
+                    {cell.holds === 'BOMB' && cell.isExposed && <Mine /> }
+                    {cell.holds === 'NUMBER' && cell.isExposed && cell.neighboringBombs }
                     {cell.isFlagged && <Flag />}
                   </Square>
                 )
