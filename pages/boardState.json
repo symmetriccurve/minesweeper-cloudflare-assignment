@@ -1,502 +1,702 @@
 [
     {
-        "i": 0,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 0,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 1,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 1,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 2,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 2,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 3,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 3,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 4,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 4,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 5,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 5,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 6,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 6,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 7,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 7,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 8,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 8,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 9,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 9,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 10,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 10,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 11,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 11,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 12,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 12,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 13,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 13,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 14,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 14,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 15,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 15,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 16,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 16,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 17,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 17,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 18,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 18,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 19,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 19,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 20,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 20,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 21,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 21,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 22,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 22,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 23,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 23,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 24,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 24,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 25,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 25,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 26,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 26,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 27,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 27,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 28,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 28,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 29,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 29,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 30,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 30,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 31,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 31,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 32,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 32,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 33,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 33,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 34,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 34,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 35,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 35,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 36,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 36,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 37,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 37,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 38,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 38,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 39,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 39,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 40,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 40,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 41,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 41,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 42,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 42,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 43,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 43,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 44,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 44,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 45,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 45,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 46,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 46,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 47,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 47,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 48,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 48,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 49,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 49,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 50,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 50,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 51,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 51,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 52,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 52,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 53,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 53,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 54,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 54,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 55,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 55,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 56,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 56,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 57,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 57,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 58,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 58,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 59,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 59,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 60,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 60,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 61,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 61,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 62,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 62,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 63,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 63,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 64,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 64,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 65,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 65,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 66,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 66,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 67,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 67,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 68,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 68,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 69,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 69,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 70,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 70,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 71,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 71,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 72,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 72,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 73,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 73,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 74,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 74,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 75,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 75,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 76,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 76,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 77,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 77,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 78,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 78,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 79,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 79,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 80,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 80,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 81,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 81,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 82,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 82,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 83,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 83,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 84,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 84,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 85,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 85,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 86,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 86,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 87,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 87,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 88,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 88,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 89,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 89,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 90,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 90,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 91,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 91,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 92,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 92,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 93,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 93,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 94,
-        "cellHas": "BLANK",
-        "shown": false
+        "id": 94,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 95,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 95,
+        "holds": "BOMB",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 96,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 96,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 97,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 97,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 98,
-        "cellHas": "NUMBER",
-        "shown": false
+        "id": 98,
+        "holds": "NUMBER",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     },
     {
-        "i": 99,
-        "cellHas": "BOMB",
-        "shown": false
+        "id": 99,
+        "holds": "BLANK",
+        "neighboringBombs": 0,
+        "isExposed": false,
+        "isFlagged": false
     }
 ]
