@@ -7,7 +7,7 @@ export default function generateBoard(size){
         boardState.push({
           id: i,
           holds: cellStates[Math.floor(Math.random() * 3)],
-          neighboringBombs: 0,
+          neighboringBombCount: 0,
           isExposed: false,
           isFlagged: false,
         })

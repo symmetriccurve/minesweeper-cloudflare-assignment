@@ -17,23 +17,6 @@ export default class App extends Component {
     boardSize: 2
   }
 
-  // getNeighboringBombCount(boardState,cellId){
-  //   let neighboringBombCount = 0
-  //   let cellIdsToCheckForBomb = []
-  //   const {boardSize} = this.state
-  //   cellIdsToCheckForBomb = getNeighbors(boardSize,cellId)
-
-  //   cellIdsToCheckForBomb.forEach(cellId=>{
-  //     console.log(`CHECKING CELL----------------- ${cellId}`)
-  //     if(boardState[cellId].holds == 'BOMB'){
-  //       console.log(`Bomb Found at ${cellId}`)
-  //       neighboringBombCount++
-  //     }
-  //   })
-  //   return neighboringBombCount
-  // }
-
-
   enableNeighboringBlankCells(boardState,cellId){
     let blankCells = []
     let cellIdsToCheckForBlank = []
@@ -55,10 +38,7 @@ export default class App extends Component {
         }
       })
     }
-    
     getAllBlanks(cellId)
-    
-    console.log(`Found BOMB AT NEIGHTBHOR BLANK, at`,nonBlankCells)
 
     blankCellIds.forEach(id=>{
       boardState[id].isExposed = true
@@ -68,7 +48,7 @@ export default class App extends Component {
       if(boardState[id].isExposed == false){
         boardState[id].isExposed = true
         // boardState[id].holds = 'NUMBER'
-        boardState[id].neighboringBombs = getNeighboringBombCount(boardState,id)
+        boardState[id].neighboringBombCount = getNeighboringBombCount(boardState,id)
       }
     })
 
@@ -77,11 +57,8 @@ export default class App extends Component {
     })
   }
 
-
   handleExpose(e,cellIndex){
     const {boardState} = this.state
-    //let bombs = 0
-    let cellIdsToCheckForBomb = []
     let currentCell = boardState[cellIndex]
     if(e.type == 'contextmenu'){
       if(currentCell.isExposed == false){
