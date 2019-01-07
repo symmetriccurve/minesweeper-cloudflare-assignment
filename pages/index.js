@@ -32,7 +32,7 @@ export default class App extends Component {
             getAllBlanks(id)
           }
         } else if (boardState[id].holds === 'BOMB' || boardState[id].holds === 'NUMBER') {
-          //nonBlankCells.push(id)
+            //nonBlankCells.push(id)
         }
       })
     }
@@ -67,12 +67,14 @@ export default class App extends Component {
         boardState[cellIndex].isExposed = true
         boardState[cellIndex].isFlagged = false
         if (currentCell.holds === 'BOMB') {
+          this.bomb.play()
           this.setState({
             isExploded: true
           })
         } else if (currentCell.holds === 'BLANK') {
           this.enableNeighboringBlankCells(boardState, cellIndex)
         } else {
+          this.reveal.play()
           boardState[cellIndex].neighboringBombs = getNeighboringBombCount(boardState, cellIndex)
         }
       }
@@ -110,6 +112,14 @@ export default class App extends Component {
     const boardStatus = isExploded ? 'lost' : 'active'
     return (
       <Layout title={`Minesweeper (${boardStatus})`}>
+      <audio ref={reveal => { this.reveal = reveal }}>
+        <source src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" type="audio/mpeg" >
+        </source>
+      </audio>
+      <audio ref={bomb => { this.bomb = bomb }}>
+        <source src='https://vocaroo.com/media_command.php?media=s0xbwFZ8axIN&command=download_mp3' type="audio/mpeg" >
+        </source>
+      </audio>
         <select onChange={e => this.handleBoardSizeChange(e)} value={boardSize}>
           <option value={1}> 1 </option>
           <option value={2}> 2 </option>
