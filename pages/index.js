@@ -22,6 +22,13 @@ export default class App extends Component {
     boardSize: 10,
     level: 'EASY'
   }
+ 
+  componentDidMount(){
+	  console.log(window)
+	  window.document.oncontextmenu = function() {
+		return false;
+	  }
+  }
 
   exposeNeighboringCells(boardState, cellId) {
     var checkedCells = []
@@ -167,7 +174,7 @@ export default class App extends Component {
                 <Square key={cell.id} disabled={this.shouldCellBeDisabled(cell)} onClick={e => this.handleExpose(e, cell.id)} onContextMenu={e => this.handleExpose(e, cell.id)}>
                   {cell.holds === 'BOMB' && cell.isExposed && <Mine />}
                   {cell.holds === 'NUMBER' && cell.isExposed && cell.neighboringBombCount.toString()}
-                  {cell.isFlagged && <Flag />}
+                  {cell.isFlagged && !cell.isExposed && <Flag />}
                 </Square>
               )
             })
