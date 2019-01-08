@@ -4,10 +4,14 @@ import Desk from '../components/desk';
 import Square from '../components/square';
 import Mine from '../components/mine';
 import Flag from '../components/flag';
+
+//game settings
 import BoardSize from './components/BoardSize';
 import BoardLevel from './components/BoardLevel';
 
 import React, { Component } from 'react'
+
+//utilities
 import getNeighbors from './utilities/getNeighbors'
 import generateBoard from './utilities/generateBoard'
 
@@ -62,9 +66,9 @@ export default class App extends Component {
     })
   }
 
-  exposeAll(){
-    let {boardState} = this.state
-    boardState.forEach((cell,index)=>{
+  exposeAll() {
+    let { boardState } = this.state
+    boardState.forEach((cell, index) => {
       boardState[index].isExposed = true
       boardState[index].isFlagged = false
     })
@@ -89,8 +93,8 @@ export default class App extends Component {
           this.bomb.play()
           this.setState({
             isExploded: true
-          },()=>{
-              this.exposeAll()
+          }, () => {
+            this.exposeAll()
           })
         } else if (currentCell.holds === 'BLANK') {
           this.exposeNeighboringCells(boardState, cellIndex)
@@ -152,10 +156,10 @@ export default class App extends Component {
             </source>
           </audio>
         </div>
-        <div className='board__settings' style={{display:'flex',margin:'1%'}}>
-          <BoardSize value={boardSize} onChange={e=>this.handleBoardSizeChange(e)}/>
-          <BoardLevel level={level} onChange={e=>this.handleLevelChange(e)}/>
-        </div>  
+        <div className='board__settings' style={{ display: 'flex', margin: '1%' }}>
+          <BoardSize value={boardSize} onChange={e => this.handleBoardSizeChange(e)} />
+          <BoardLevel level={level} onChange={e => this.handleLevelChange(e)} />
+        </div>
         <Desk boardSize={boardSize}>
           {
             boardState.map(cell => {
