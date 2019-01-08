@@ -4,50 +4,57 @@ import Desk from '../components/desk';
 import Square from '../components/square';
 import Mine from '../components/mine';
 import Flag from '../components/flag';
+import BoardSize from './components/BoardSize';
+import BoardLevel from './components/BoardLevel';
 
 import React, { Component } from 'react'
 import getNeighbors from './utilities/getNeighbors'
 import generateBoard from './utilities/generateBoard'
-import getNeighboringBombCount from './utilities/getNeighboringBombCount'
 
 export default class App extends Component {
   state = {
-    boardState: generateBoard(10),
+    boardState: generateBoard(10, 'EASY'),
     isExploded: false,
-    boardSize: 10
+    boardSize: 10,
+    level: 'EASY'
   }
 
-  enableNeighboringBlankCells(boardState, cellId) {
-    var blankCellIds = []
-    var nonBlankCells = []
+  exposeNeighboringCells(boardState, cellId) {
+    var checkedCells = []
     const { boardSize } = this.state
 
-    const getAllBlanks = (cellId) => {
+    const checkNeighboringCells = (cellId) => {
       const neighbors = getNeighbors(boardSize, cellId)
-
+      checkedCells = [cellId, ...checkedCells]
+      /* Current Cell does not need a check as it is exposed and counted into checked cells */
       neighbors.forEach(id => {
-        if (boardState[id].holds === 'BLANK') {
-          blankCellIds.push(id)
-          if (blankCellIds.indexOf(id) === -1) {
-            getAllBlanks(id)
+        if (checkedCells.indexOf(id) === -1) {
+          /* 
+            Avoid checking neighbor's neighbor's neighbor which is same cell 
+
+                                          a b c
+                                          d e f
+                                          g h i
+
+            e is a neighbor to f, while checking for f's neighbor avoid checking e as it is already checked.
+          */
+          checkedCells.push(id)
+          if (boardState[id].holds === 'BLANK') {
+            checkNeighboringCells(id)
+            /* if the neihbor cell is blank as well, do recursive until finding no blank neighbor*/
           }
-        } else if (boardState[id].holds === 'BOMB' || boardState[id].holds === 'NUMBER') {
-            //nonBlankCells.push(id)
         }
       })
     }
-    getAllBlanks(cellId)
 
-    blankCellIds.forEach(id => {
+    checkNeighboringCells(cellId)
+
+    checkedCells.forEach(id => {
       boardState[id].isExposed = true
-    })
-
-    nonBlankCells.forEach(id => {
-      if (boardState[id].isExposed === false) {
-        boardState[id].isExposed = true
-        // boardState[id].holds = 'NUMBER'
-        boardState[id].neighboringBombCount = getNeighboringBombCount(boardState, id)
-      }
+      /* 
+        At this point few cells might have already exposed, a additional check can be added to avoid expose of 
+        exposed cells(https://stackify.com/premature-optimization-evil/)
+      */
     })
 
     this.setState({
@@ -59,6 +66,7 @@ export default class App extends Component {
     const { boardState } = this.state
     let currentCell = boardState[cellIndex]
     if (e.type === 'contextmenu') {
+      /* Check if the click is a right click */
       if (currentCell.isExposed === false) {
         boardState[cellIndex].isFlagged = true
       }
@@ -72,10 +80,9 @@ export default class App extends Component {
             isExploded: true
           })
         } else if (currentCell.holds === 'BLANK') {
-          this.enableNeighboringBlankCells(boardState, cellIndex)
+          this.exposeNeighboringCells(boardState, cellIndex)
         } else {
           this.reveal.play()
-          boardState[cellIndex].neighboringBombs = getNeighboringBombCount(boardState, cellIndex)
         }
       }
     }
@@ -98,49 +105,47 @@ export default class App extends Component {
   }
 
   handleBoardSizeChange(e) {
-    console.log('boardSize', e.target.value);
+    //console.log(`SETTING BOARD SIZE TO ${e.target.value}`)
     const boardSize = Number(e.target.value)
+    const { level } = this.state
     this.setState({
       boardSize,
-      boardState: generateBoard(boardSize)
+      boardState: generateBoard(boardSize, level)
     })
+  }
 
+  handleLevelChange(e) {
+    //console.log(`SETTING LEVEL TO ${e.target.value}`)
+    const level = e.target.value
+    const { boardSize } = this.state
+    this.setState({
+      level,
+      boardState: generateBoard(boardSize, level)
+    })
   }
 
   render() {
-    const { boardState, isExploded, boardSize } = this.state
+    const { boardState, isExploded, boardSize, level } = this.state
     const boardStatus = isExploded ? 'lost' : 'active'
     return (
-      <Layout title={`Minesweeper (${boardStatus})`}>
-      <audio ref={reveal => { this.reveal = reveal }}>
-        <source src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" type="audio/mpeg" >
-        </source>
-      </audio>
-      <audio ref={bomb => { this.bomb = bomb }}>
-        <source src='https://vocaroo.com/media_command.php?media=s0xbwFZ8axIN&command=download_mp3' type="audio/mpeg" >
-        </source>
-      </audio>
-        <select onChange={e => this.handleBoardSizeChange(e)} value={boardSize}>
-          <option value={1}> 1 </option>
-          <option value={2}> 2 </option>
-          <option value={3}> 3 </option>
-          <option value={4}> 4 </option>
-          <option value={5}> 5 </option>
-          <option value={6}> 6 </option>
-          <option value={7}> 7 </option>
-          <option value={8}> 8 </option>
-          <option value={9}> 9 </option>
-          <option value={10}> 10 </option>
-        </select>
+      <Layout title={`Minesweeper (${boardStatus})`} oncontextmenu="return false;">
+        <audio ref={reveal => { this.reveal = reveal }}>
+          <source src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" type="audio/mpeg" >
+          </source>
+        </audio>
+        <audio ref={bomb => { this.bomb = bomb }}>
+          <source src='https://vocaroo.com/media_command.php?media=s0xbwFZ8axIN&command=download_mp3' type="audio/mpeg" >
+          </source>
+        </audio>
+        <BoardSize value={boardSize} onChange={e=>this.handleBoardSizeChange(e)}/>
+        <BoardLevel level={level} onChange={e=>this.handleLevelChange(e)}/>
         <Desk boardSize={boardSize}>
           {
             boardState.map(cell => {
               return (
                 <Square key={cell.id} disabled={this.shouldCellBeDisabled(cell)} onClick={e => this.handleExpose(e, cell.id)} onContextMenu={e => this.handleExpose(e, cell.id)}>
                   {cell.holds === 'BOMB' && cell.isExposed && <Mine />}
-                  {cell.holds === 'NUMBER' && cell.isExposed && cell.neighboringBombs}
-                  {/* {cell.holds ==== 'BOMB' && <Mine /> }
-                    {cell.holds ==== 'NUMBER' && cell.id } */}
+                  {cell.holds === 'NUMBER' && cell.isExposed && cell.neighboringBombCount.toString()}
                   {cell.isFlagged && <Flag />}
                 </Square>
               )

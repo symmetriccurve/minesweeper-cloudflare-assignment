@@ -10,7 +10,7 @@ export default function getNeighbors(boardSize, cellId) {
     switch (cellId) {
       case 0:
         /* Top Left */
-        neighbors = [1, boardSize, boardSize + 1,]
+        neighbors = [1, boardSize, boardSize + 1]
         break
       case boardSize - 1:
         /* Top Right */
