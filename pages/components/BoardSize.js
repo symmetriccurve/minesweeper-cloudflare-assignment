@@ -7,7 +7,7 @@ export default ({value,onChange}) => {
     }
   return (
     <div>
-      <select value={value} onChange={e=>{onChange(e)}}>
+      <select value={value} onChange={e=>{onChange(e)}} style={{margin:'5px'}}>
           {options}
       </select>
     </div>

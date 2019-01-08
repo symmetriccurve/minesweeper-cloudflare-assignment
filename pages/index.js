@@ -62,6 +62,17 @@ export default class App extends Component {
     })
   }
 
+  exposeAll(){
+    let {boardState} = this.state
+    boardState.forEach((cell,index)=>{
+      boardState[index].isExposed = true
+      boardState[index].isFlagged = false
+    })
+    this.setState({
+      boardState
+    })
+  }
+
   handleExpose(e, cellIndex) {
     const { boardState } = this.state
     let currentCell = boardState[cellIndex]
@@ -78,6 +89,8 @@ export default class App extends Component {
           this.bomb.play()
           this.setState({
             isExploded: true
+          },()=>{
+              this.exposeAll()
           })
         } else if (currentCell.holds === 'BLANK') {
           this.exposeNeighboringCells(boardState, cellIndex)
@@ -128,17 +141,21 @@ export default class App extends Component {
     const { boardState, isExploded, boardSize, level } = this.state
     const boardStatus = isExploded ? 'lost' : 'active'
     return (
-      <Layout title={`Minesweeper (${boardStatus})`} oncontextmenu="return false;">
-        <audio ref={reveal => { this.reveal = reveal }}>
-          <source src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" type="audio/mpeg" >
-          </source>
-        </audio>
-        <audio ref={bomb => { this.bomb = bomb }}>
-          <source src='https://vocaroo.com/media_command.php?media=s0xbwFZ8axIN&command=download_mp3' type="audio/mpeg" >
-          </source>
-        </audio>
-        <BoardSize value={boardSize} onChange={e=>this.handleBoardSizeChange(e)}/>
-        <BoardLevel level={level} onChange={e=>this.handleLevelChange(e)}/>
+      <Layout title={`Minesweeper (${boardStatus})`} classname='board'>
+        <div className='board__sounds'>
+          <audio ref={reveal => { this.reveal = reveal }}>
+            <source src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3" type="audio/mpeg" >
+            </source>
+          </audio>
+          <audio ref={bomb => { this.bomb = bomb }}>
+            <source src='https://vocaroo.com/media_command.php?media=s0xbwFZ8axIN&command=download_mp3' type="audio/mpeg" >
+            </source>
+          </audio>
+        </div>
+        <div className='board__settings' style={{display:'flex',margin:'1%'}}>
+          <BoardSize value={boardSize} onChange={e=>this.handleBoardSizeChange(e)}/>
+          <BoardLevel level={level} onChange={e=>this.handleLevelChange(e)}/>
+        </div>  
         <Desk boardSize={boardSize}>
           {
             boardState.map(cell => {
