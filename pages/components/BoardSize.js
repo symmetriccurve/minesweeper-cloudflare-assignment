@@ -2,7 +2,7 @@ import React from 'react'
 
 export default ({ value, onChange }) => {
 	let options = []
-	for (let i = 0; i <= 100; i++) {
+	for (let i = 2; i <= 100; i++) {
 		options.push(<option key={i} value={i}>{i}</option>)
 	}
 	return (
