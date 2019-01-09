@@ -25,7 +25,6 @@ export default class App extends Component {
   }
  
   componentDidMount(){
-	  console.log(window)
 	  window.document.oncontextmenu = function() {
 		return false;
 	  }
