@@ -20,7 +20,8 @@ export default class App extends Component {
     boardState: generateBoard(10, 'EASY'),
     isExploded: false,
     boardSize: 10,
-    level: 'EASY'
+	level: 'EASY',
+	boardStatus: 'Active'
   }
  
   componentDidMount(){
@@ -68,9 +69,7 @@ export default class App extends Component {
       */
     })
 
-    this.setState({
-      boardState
-    })
+    return boardState
   }
 
   exposeAll() {
@@ -85,7 +84,7 @@ export default class App extends Component {
   }
 
   handleExpose(e, cellIndex) {
-    const { boardState } = this.state
+    let { boardState } = this.state
     let currentCell = boardState[cellIndex]
     if (e.type === 'contextmenu') {
       /* Check if the click is a right click */
@@ -95,24 +94,45 @@ export default class App extends Component {
     } else {
       if (currentCell.isExposed === false) {
         boardState[cellIndex].isExposed = true
-        boardState[cellIndex].isFlagged = false
+		boardState[cellIndex].isFlagged = false
         if (currentCell.holds === 'BOMB') {
           this.bomb.play()
           this.setState({
-            isExploded: true
+			isExploded: true,
+			boardStatus: 'Lost'
           }, () => {
             this.exposeAll()
           })
         } else if (currentCell.holds === 'BLANK') {
-          this.exposeNeighboringCells(boardState, cellIndex)
+		  boardState = this.exposeNeighboringCells(boardState, cellIndex)
         } else {
           this.reveal.play()
         }
       }
-    }
+	}
+
     this.setState({
       boardState
-    })
+    },()=>this.isAllExposedOrFlagged())
+  }
+
+  isAllExposedOrFlagged(){
+	const {boardState, isExploded} = this.state
+	let exposeCellCount = 0
+	boardState.forEach(eachCell=>{
+		if(eachCell.isExposed || eachCell.isFlagged){
+			exposeCellCount++
+		}
+	})
+
+	if(exposeCellCount == boardState.length){
+		if(!isExploded){
+			this.setState({
+				boardStatus: 'win'
+			})
+		}
+	}
+
   }
 
   shouldCellBeDisabled(cell) {
@@ -149,8 +169,7 @@ export default class App extends Component {
   }
 
   render() {
-    const { boardState, isExploded, boardSize, level } = this.state
-    const boardStatus = isExploded ? 'lost' : 'active'
+    const { boardState, isExploded, boardSize, level, boardStatus } = this.state
     return (
       <Layout title={`Minesweeper (${boardStatus})`} classname='board'>
         <div className='board__sounds'>
