@@ -18,3 +18,7 @@ The rules are pretty simple (try to play with the [demo](https://sweeper.now.sh/
 * Player can right click to flag square as mine.
 * The number tells how many mines are in the immediate neighborhood.
 * The goal is to reveal or flag all squares without revealing a mine.
+
+
+Game Sounds
+* The Game includes sounds, please lower your volume if you are on speakers.
